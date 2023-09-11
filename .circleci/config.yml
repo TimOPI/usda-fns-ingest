@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/python:3.6
         environment:
           TZ: America/New_York
           PIPENV_VENV_IN_PROJECT: "TRUE"
@@ -24,9 +24,6 @@ jobs:
           name: Setup environment
           command: |
             pip install pipenv
-            pipenv run pip freeze > requirements.txt
-            pipenv install -r requirements.txt
-            del requirements.txt
             pipenv install --dev
 
       - run:
